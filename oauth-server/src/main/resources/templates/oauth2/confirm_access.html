@@ -8,6 +8,7 @@
 
 	<h1>是否允许授权</h1>
 	<p>
+	<span th:text="${authorizationRequest.redirectUri}"></span>
 		是否允许<span th:text="${authorizationRequest.clientId}"></span> 获取你的用户信息
 	</p>
 	<form id="confirmationForm" name="confirmationForm" action="/oauth/authorize" method="post">

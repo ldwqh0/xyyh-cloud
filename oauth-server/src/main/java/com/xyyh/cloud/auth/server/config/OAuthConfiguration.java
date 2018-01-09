@@ -12,6 +12,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+
+import com.xyyh.cloud.auth.server.security.oauth2.provider.approval.SimpleUserApprovalHandler;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -45,6 +48,8 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		// .scopes("app", "cas")
 		// // 是否启用自动授权
 		// .autoApprove(false).autoApprove("cas");
+
+		// 使用数据库配置的client
 		log.info("use clientDetailsService" + clientDetailsService);
 		clients.withClientDetails(clientDetailsService);
 	}
@@ -54,6 +59,9 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		super.configure(endpoints);
 		endpoints.accessTokenConverter(tokenConverter());
 		endpoints.tokenStore(tokenStore());
+		// UserApprovalHandler,当前用户的授权处理
+		// endpoints.userApprovalHandler(approvalHandler)
+		endpoints.userApprovalHandler(userApprovalHandler());
 	}
 
 	// 用jwt保存token信息
@@ -67,6 +75,11 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 		converter.setSigningKey("good");
 		return converter;
+	}
+	
+	@Bean
+	public SimpleUserApprovalHandler userApprovalHandler() {
+		return new SimpleUserApprovalHandler();
 	}
 
 	// @Bean
