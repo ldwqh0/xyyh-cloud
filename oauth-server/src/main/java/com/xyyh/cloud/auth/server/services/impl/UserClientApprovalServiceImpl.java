@@ -1,6 +1,7 @@
 package com.xyyh.cloud.auth.server.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.xyyh.cloud.auth.server.entity.UserClientApprovalEntity;
@@ -18,7 +19,7 @@ public class UserClientApprovalServiceImpl implements UserClientApprovalService 
 		UserClientApprovalEntity query = new UserClientApprovalEntity();
 		query.setUser(user);
 		query.setClient(client);
-		return repository.exists(query);
+		return repository.exists(Example.of(query));
 	}
 
 	@Override
@@ -26,7 +27,7 @@ public class UserClientApprovalServiceImpl implements UserClientApprovalService 
 		UserClientApprovalEntity query = new UserClientApprovalEntity();
 		query.setUser(user);
 		query.setClient(client);
-		if (!repository.exists(query)) {
+		if (!repository.exists(Example.of(query))) {
 			repository.save(query);
 		}
 	}

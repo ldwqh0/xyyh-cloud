@@ -32,7 +32,7 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
 	}
 
 	public ClientDetailsEntity findOne(String clientId) {
-		return clientRepository.findOne(clientId);
+		return clientRepository.findById(clientId).get();
 	}
 	
 	@PostConstruct
