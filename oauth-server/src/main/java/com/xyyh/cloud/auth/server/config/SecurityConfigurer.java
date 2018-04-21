@@ -12,9 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import com.xyyh.cloud.auth.server.security.RemoteUserDetailsAuthenticationProvider;
 import com.xyyh.cloud.auth.server.services.UserService;
 
-@Order(99)
+@Order(100)
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserService userService;
@@ -31,10 +31,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/oauth/**").authenticated()
 				.anyRequest().authenticated().and()
 				.formLogin();
-//		http.csrf().disable();
+		// http.csrf().disable();
 		// 注意，如果我们的资源服务器和授权服务器在同一个应用中，必须确保资源服务器保护的链接和formlogin保护的链接分开。
 		// 如果不分开的话，会导致所有的请求优先通过formlogin,这样，所有的请求都会进入登录入口点，而不会进入@EnableResourceServer的配置
-		http.requestMatchers().antMatchers("/login**", "/oauth/**", "/current**");
+//		http.requestMatchers().antMatchers("/login**", "/oauth/**");
 	}
 
 	@Override
