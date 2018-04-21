@@ -31,7 +31,7 @@ public class UserServiceSupport implements UserService {
 
 	@Override
 	public User loadById(long id) {
-		return userRepository.findOne(id);
+		return userRepository.findById(id).get();
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class UserServiceSupport implements UserService {
 	@Override
 	@Transactional
 	public void changePasswordById(long userId, String password) {
-		User user = userRepository.findOne(userId);
+		User user = userRepository.findById(userId).get();
 		if (user != null) {
 			user.setPassword(passwordEncoder.encode(password));
 		}

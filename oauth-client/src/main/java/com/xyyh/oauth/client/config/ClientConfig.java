@@ -1,5 +1,6 @@
 package com.xyyh.oauth.client.config;
 
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
@@ -10,6 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 @EnableWebSecurity
 @EnableOAuth2Sso
@@ -22,8 +28,10 @@ public class ClientConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/login").permitAll()
 				.anyRequest().authenticated();
-		http.httpBasic().disable();
+		// http.csrf().csrfTokenRepository(csrfTokenRepository())
+		// .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
 		http.csrf().disable();
+		http.httpBasic().disable();
 	}
 
 	@PostConstruct

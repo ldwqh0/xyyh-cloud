@@ -7,9 +7,10 @@ security:
       client-id: client
       client-secret: test
       user-authorization-uri: http://localhost:8080/oauth/authorize
+      client-authentication-scheme: form
       scope: cas     
     resource:
 #      token-info-uri: 
       user-info-uri: http://localhost:8080/user
-      
+      preferTokenInfo: false
       

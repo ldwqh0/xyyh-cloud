@@ -19,7 +19,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 		super.configure(resources);
 		resources.tokenStore(tokenStore);
-//		resources.tokenServices(tokenServices);
+		// resources.tokenServices(tokenServices);
 		// 如果使用jwt存储token的话，需要一个tokenExtractor将用户解析出来
 		// resources.tokenExtractor(tokenExtractor);
 	}
@@ -27,7 +27,9 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		super.configure(http);
+//		http.csrf().disable();
 		http.authorizeRequests().antMatchers("/**").authenticated();
+		http.requestMatchers().antMatchers("/user**");
 	}
 
 }
