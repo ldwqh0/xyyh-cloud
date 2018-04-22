@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.xyyh.cloud.auth.server.clients.UserClient;
 import com.xyyh.cloud.auth.server.services.UserService;
-import com.xyyh.web.common.uap.dto.UserDetailsDto;
+import com.xyyh.cloud.security.common.UserDetailsDto;
 
 @Service
 public class RemoteUserDetailService implements UserService {

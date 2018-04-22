@@ -1,4 +1,4 @@
-package com.xyyh.cloud.auth.server.dto;
+package com.xyyh.cloud.security.common;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -6,29 +6,19 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Id;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
-
 
 public class ClientDetailsDto implements ClientDetails, Serializable {
 
 	private static final long serialVersionUID = -7408160396122766317L;
 
-	@Id
-	@Column(name = "client_id_")
 	private String id;
 
-	@Column(name = "client_secret_")
 	private String clientSecret;
 
-	@ElementCollection
 	private Set<String> scope;
 
-	@ElementCollection
 	private Set<String> authorizedGrantTypes;
 
 	@Override
@@ -68,13 +58,13 @@ public class ClientDetailsDto implements ClientDetails, Serializable {
 
 	@Override
 	public Set<String> getRegisteredRedirectUri() {
-		return null;
+
+		return authorizedGrantTypes;
 	}
 
-	// 这里必须返回一个非null对象
 	@Override
 	public Collection<GrantedAuthority> getAuthorities() {
-		return Collections.emptySet();
+		return Collections.emptyList();
 	}
 
 	@Override
@@ -94,23 +84,7 @@ public class ClientDetailsDto implements ClientDetails, Serializable {
 
 	@Override
 	public Map<String, Object> getAdditionalInformation() {
-		return Collections.emptyMap();
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public void setClientSecret(String clientSecret) {
-		this.clientSecret = clientSecret;
-	}
-
-	public void setScope(Set<String> scope) {
-		this.scope = scope;
-	}
-
-	public void setAuthorizedGrantTypes(Set<String> authorizedGrantTypes) {
-		this.authorizedGrantTypes = authorizedGrantTypes;
+		return null;
 	}
 
 }

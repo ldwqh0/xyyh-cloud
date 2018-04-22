@@ -1,11 +1,11 @@
 package com.xyyh.web.common.converter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.collections4.CollectionUtils;
-
-import com.xyyh.web.common.dto.Dto;
 
 /**
  * 定义了一个从Model到DTO对象的转换器。
@@ -17,14 +17,22 @@ import com.xyyh.web.common.dto.Dto;
  * @param <DTO>
  *            数据传输对象类型
  */
-public abstract class AbstractConverter<E, DTO extends Dto> {
+public abstract class AbstractConverter<E, DTO extends Serializable> {
 	/**
 	 * 将一个@Entity对象转换一个DTO对象
 	 * 
 	 * @param model
 	 * @return
 	 */
-	public abstract DTO toDto(E model);
+	public DTO toDto(E model) {
+		return toDtoActual(model);
+	}
+
+	public DTO toDto(Optional<E> model) {
+		return toDtoActual(model.get());
+	}
+
+	protected abstract DTO toDtoActual(E model);
 
 	/**
 	 * 将一个DTO对象的值，复制到一个@Entity对象

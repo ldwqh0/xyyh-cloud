@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.xyyh.web.common.uap.dto.UserDetailsDto;
 
+
 @FeignClient("UAP/user")
 public interface UserClient {
 

@@ -1,6 +1,7 @@
 server:
-  port: 8888
+  port: 8080
 zuul:
+  add-host-header: true
   routes:
     uap:
       path: /test/**  
@@ -13,12 +14,12 @@ eureka:
 security:
   oauth2:
     client:
-      access-token-uri: http://localhost:8080/oauth/token
+      access-token-uri: http://localhost:8888/oauth/token
       client-id: client
       client-secret: test
-      user-authorization-uri: http://localhost:8080/oauth/authorize
+      user-authorization-uri: http://localhost:8888/oauth/authorize
       client-authentication-scheme: header
       scope: cas
     resource:
-      user-info-uri: http://localhost:8080/user
+      user-info-uri: http://localhost:8080/test/test
       preferTokenInfo: false

@@ -10,7 +10,7 @@ import com.xyyh.web.common.converter.AbstractConverter;
 public class ClientDetailsConverter extends AbstractConverter<ClientDetailsEntity, ClientDetailsDto> {
 
 	@Override
-	public ClientDetailsDto toDto(ClientDetailsEntity model) {
+	public ClientDetailsDto toDtoActual(ClientDetailsEntity model) {
 		ClientDetailsDto dto = new ClientDetailsDto();
 		dto.setAuthorizedGrantTypes(model.getAuthorizedGrantTypes());
 		dto.setClientSecret(model.getClientSecret());

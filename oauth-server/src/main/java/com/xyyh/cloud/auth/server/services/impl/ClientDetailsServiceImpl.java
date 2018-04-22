@@ -26,15 +26,14 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
 	@Override
 	@Transactional
 	public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
-		ClientDetailsDto dto=
-		  convert.toDto(findOne(clientId));
+		ClientDetailsDto dto = convert.toDto(findOne(clientId));
 		return dto;
 	}
 
 	public ClientDetailsEntity findOne(String clientId) {
 		return clientRepository.findById(clientId).get();
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		System.out.println("a more created");
