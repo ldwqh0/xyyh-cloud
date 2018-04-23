@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.xyyh.cloud.security.common.UserDetailsDto;
-import com.xyyh.cloud.security.common.UserDto;
+import com.xyyh.cloud.uap.dto.UserDto;
 import com.xyyh.cloud.uap.entity.RoleEntity;
 import com.xyyh.cloud.uap.entity.UserEntity;
 import com.xyyh.web.common.converter.AbstractConverter;
@@ -60,10 +60,10 @@ public class UserConverter extends AbstractConverter<UserEntity, UserDto> {
 		dest.setExpired(from.isExpired());
 		dest.setLocked(from.isLocked());
 		dest.setUsername(from.getUsername());
-		dest.setId(from.getId());
+		dest.setId(from.getId().toString());
 		List<RoleEntity> roleEntities = from.getRoleEntities();
 		if (CollectionUtils.isNotEmpty(roleEntities)) {
-			dest.setAuthorities(roleConverter.toDto(roleEntities));
+			dest.setAuthorities(roleConverter.toGrantedAuthorityDto(roleEntities));
 		}
 		return dest;
 	}

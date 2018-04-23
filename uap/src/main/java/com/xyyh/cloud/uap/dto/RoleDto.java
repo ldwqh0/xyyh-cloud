@@ -1,8 +1,7 @@
-package com.xyyh.cloud.security.common;
+package com.xyyh.cloud.uap.dto;
 
 import java.io.Serializable;
-
-import org.springframework.security.core.GrantedAuthority;
+import java.util.UUID;
 
 import lombok.Data;
 
@@ -13,16 +12,11 @@ import lombok.Data;
  *
  */
 @Data
-public class RoleDto implements Serializable, GrantedAuthority {
+public class RoleDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Long id;
+	private UUID id;
 	private String authority;
 	private String name;
 	private String description;
-
-	@Override
-	public String getAuthority() {
-		return authority;
-	}
 
 }

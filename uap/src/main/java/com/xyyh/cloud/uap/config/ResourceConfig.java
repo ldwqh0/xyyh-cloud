@@ -17,6 +17,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/users**").anonymous()
 				.antMatchers("/users/**").anonymous()
+				.antMatchers("/roles**").anonymous()
 				.anyRequest().authenticated()
 				.and().formLogin();
 	}

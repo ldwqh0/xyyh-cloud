@@ -7,11 +7,12 @@ spring:
     username: root
     password: admin123456!@#
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MariaDBDialect
     show-sql: true
     hibernate:
       ddl-auto: update
       use-new-id-generator-mappings: true
+      storage_engine: innodb
   redis:
     host: 127.0.0.1
   cache: 

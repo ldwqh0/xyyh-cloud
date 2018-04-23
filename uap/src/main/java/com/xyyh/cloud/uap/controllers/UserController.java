@@ -2,7 +2,6 @@ package com.xyyh.cloud.uap.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xyyh.cloud.security.common.UserDetailsDto;
-import com.xyyh.cloud.security.common.UserDto;
 import com.xyyh.cloud.uap.converter.UserConverter;
+import com.xyyh.cloud.uap.dto.UserDto;
 import com.xyyh.cloud.uap.entity.UserEntity;
 import com.xyyh.cloud.uap.services.UserService;
 

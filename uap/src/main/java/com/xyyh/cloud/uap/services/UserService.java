@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.xyyh.cloud.security.common.UserDto;
+import com.xyyh.cloud.uap.dto.UserDto;
 import com.xyyh.cloud.uap.entity.UserEntity;
 
 public interface UserService {

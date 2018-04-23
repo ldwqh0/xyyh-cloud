@@ -13,8 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.xyyh.cloud.security.common.UserDto;
 import com.xyyh.cloud.uap.converter.UserConverter;
+import com.xyyh.cloud.uap.dto.UserDto;
 import com.xyyh.cloud.uap.entity.UserEntity;
 import com.xyyh.cloud.uap.repositories.UserRepository;
 import com.xyyh.cloud.uap.services.UserService;

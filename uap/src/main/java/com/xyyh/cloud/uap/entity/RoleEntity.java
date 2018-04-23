@@ -19,7 +19,7 @@ public class RoleEntity extends BasePersistable {
 	@Column(name = "description_", length = 4000)
 	private String description;
 
-	@Column(name = "authority_", length = 50, nullable = false)
+	@Column(name = "authority_", length = 50, nullable = false, unique = true)
 	private String authority;
 
 	public String getAuthority() {
