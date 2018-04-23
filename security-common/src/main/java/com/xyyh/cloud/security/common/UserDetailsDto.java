@@ -2,6 +2,7 @@ package com.xyyh.cloud.security.common;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserDetailsDto implements UserDetails {
 
 	private static final long serialVersionUID = 2643458087256293355L;
+	private UUID id;
 
 	private String username;
 
@@ -23,6 +25,14 @@ public class UserDetailsDto implements UserDetails {
 	private boolean locked;
 
 	private List<? extends GrantedAuthority> authorities;
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

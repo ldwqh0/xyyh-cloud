@@ -1,5 +1,7 @@
 package com.xyyh.cloud.uap.services;
 
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,7 +15,7 @@ public interface UserService {
 	 * @param id
 	 * @return
 	 */
-	public UserEntity loadById(long id);
+	public UserEntity loadById(UUID id);
 
 	/**
 	 * 保存用户信息，包括密码信息
@@ -29,15 +31,7 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	public UserEntity update(UserDto user);
-
-	/**
-	 * 修改已知用户的密码
-	 * 
-	 * @param userId
-	 * @param password
-	 */
-	public void changePasswordById(long userId, String password);
+	public UserEntity update(UUID id, UserDto user);
 
 	/**
 	 * 根据用户名查找用户
@@ -57,5 +51,12 @@ public interface UserService {
 	 * @return
 	 */
 	public Page<UserEntity> findByUsername(String username, Pageable pageRequest);
+
+	/**
+	 * 删除用户
+	 * 
+	 * @param id
+	 */
+	public void delete(UUID id);
 
 }

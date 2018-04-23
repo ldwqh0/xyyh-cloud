@@ -1,4 +1,4 @@
-package com.xyyh.cloud.uap.controller;
+package com.xyyh.cloud.uap.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

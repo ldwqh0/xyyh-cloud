@@ -1,5 +1,7 @@
 package com.xyyh.cloud.uap.services.support;
 
+import java.util.UUID;
+
 import javax.cache.annotation.CacheRemoveAll;
 import javax.cache.annotation.CacheResult;
 
@@ -30,7 +32,7 @@ public class UserServiceSupport implements UserService {
 	private UserConverter userConverter;
 
 	@Override
-	public UserEntity loadById(long id) {
+	public UserEntity loadById(UUID id) {
 		return userRepository.findById(id).get();
 	}
 
@@ -55,21 +57,12 @@ public class UserServiceSupport implements UserService {
 	@Override
 	@Transactional
 	@CacheRemoveAll(cacheName = "user")
-	public UserEntity update(UserDto user) {
-		UserEntity user_ = userRepository.getOne(user.getId());
+	public UserEntity update(UUID id, UserDto user) {
+		UserEntity user_ = userRepository.findById(id).get();
 		if (user_ != null) {
 			userConverter.copyProperties(user_, user);
 		}
 		return user_;
-	}
-
-	@Override
-	@Transactional
-	public void changePasswordById(long userId, String password) {
-		UserEntity userEntity = userRepository.findById(userId).get();
-		if (userEntity != null) {
-			userEntity.setPassword(passwordEncoder.encode(password));
-		}
 	}
 
 	@Override
@@ -81,6 +74,12 @@ public class UserServiceSupport implements UserService {
 	@Override
 	public Page<UserEntity> findByUsername(String username, Pageable pageable) {
 		return userRepository.findByUsernameContaining(username, pageable);
+	}
+
+	@Override
+	@Transactional
+	public void delete(UUID id) {
+		userRepository.deleteById(id);
 	}
 
 }

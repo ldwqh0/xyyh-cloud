@@ -12,7 +12,7 @@ public class RoleConverter extends AbstractConverter<RoleEntity, RoleDto> {
 	@Override
 	public RoleDto toDtoActual(RoleEntity roleEntity) {
 		RoleDto dto = new RoleDto();
-		dto.setId(roleEntity.getId());
+//		dto.setId(roleEntity.getId());
 		dto.setName(roleEntity.getName());
 		dto.setDescription(roleEntity.getDescription());
 		dto.setAuthority(roleEntity.getAuthority());
@@ -24,7 +24,7 @@ public class RoleConverter extends AbstractConverter<RoleEntity, RoleDto> {
 		if (dest != null && source != null) {
 			dest.setAuthority(source.getAuthority());
 			dest.setDescription(source.getDescription());
-			dest.setId(source.getId());
+//			dest.setId(source.getId());
 			dest.setName(source.getName());
 		}
 	}

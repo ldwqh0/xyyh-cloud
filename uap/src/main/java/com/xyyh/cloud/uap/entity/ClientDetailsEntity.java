@@ -7,7 +7,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import com.xyyh.web.common.domain.BasePersistable;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity(name = "client_info_")
 @Getter
 @Setter
-public class ClientDetailsEntity extends AbstractPersistable<String> {
+public class ClientDetailsEntity extends BasePersistable {
 
 	/**
 	 * 连接的密钥，密钥是加密的

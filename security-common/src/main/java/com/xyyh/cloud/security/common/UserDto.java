@@ -1,6 +1,7 @@
 package com.xyyh.cloud.security.common;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import lombok.Data;
 
@@ -8,7 +9,7 @@ import lombok.Data;
 public class UserDto implements Serializable {
 	private static final long serialVersionUID = 3365521438775743670L;
 
-	private Long id;
+	private UUID id;
 
 	private String username;
 

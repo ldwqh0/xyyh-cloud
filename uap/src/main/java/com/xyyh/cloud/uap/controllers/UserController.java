@@ -1,9 +1,12 @@
-package com.xyyh.cloud.uap.controller;
+package com.xyyh.cloud.uap.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +20,8 @@ import com.xyyh.cloud.uap.services.UserService;
 import io.swagger.annotations.ApiOperation;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("users")
@@ -33,7 +38,7 @@ public class UserController {
 
 	@ApiOperation("获取用户信息")
 	@GetMapping(params = "username")
-	public UserDetailsDto loadByUserName(@RequestParam("userName") String username) {
+	public UserDetailsDto loadByUserName(@RequestParam("username") String username) {
 		UserEntity userEntity = userSerivce.loadByUserName(username);
 		return userConverter.toDetailsDto(userEntity);
 	}
@@ -45,7 +50,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(method = POST)
-	public UserDto save(UserDto user) {
+	public UserDto save(@RequestBody UserDto user) {
 		UserEntity user_ = userSerivce.save(user);
 		return userConverter.toDto(user_);
 	}
@@ -57,4 +62,8 @@ public class UserController {
 		return passwordEncoder.matches(password, userEntity.getPassword());
 	}
 
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable("id") UUID id) {
+		userSerivce.delete(id);
+	}
 }

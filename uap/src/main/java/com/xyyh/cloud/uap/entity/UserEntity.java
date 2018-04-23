@@ -2,7 +2,6 @@ package com.xyyh.cloud.uap.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import com.xyyh.web.common.domain.BasePersistable;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "user_")
-public class UserEntity extends AbstractPersistable<String> implements Serializable {
+public class UserEntity extends BasePersistable implements Serializable {
 
 	private static final long serialVersionUID = -532240698999268985L;
 
@@ -47,8 +46,8 @@ public class UserEntity extends AbstractPersistable<String> implements Serializa
 	 */
 	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role_", joinColumns = {
-			@JoinColumn(name = "user_", referencedColumnName = "id_") }, inverseJoinColumns = {
-					@JoinColumn(name = "role_", referencedColumnName = "id_") })
+			@JoinColumn(name = "user_", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "role_", referencedColumnName = "id") })
 	private List<RoleEntity> roleEntities;
 
 	/**
@@ -56,9 +55,5 @@ public class UserEntity extends AbstractPersistable<String> implements Serializa
 	 */
 	@ManyToMany
 	private List<ClientDetailsEntity> approvalClients;
-
-	public UserEntity() {
-		this.setId(UUID.randomUUID().toString());
-	}
 
 }

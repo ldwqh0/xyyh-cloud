@@ -23,7 +23,12 @@ public class UserConverter extends AbstractConverter<UserEntity, UserDto> {
 	@Override
 	public UserDto toDtoActual(final UserEntity entity) {
 		final UserDto dto = new UserDto();
-		// TODO 好多待添加
+		 dto.setCredentialsExpired(entity.isCredentialsExpired());
+		 dto.setEnabled(entity.isEnabled());
+		 dto.setExpired(entity.isExpired());
+		 dto.setId(entity.getId());
+		 dto.setLocked(entity.isLocked());
+		 dto.setUsername(entity.getUsername());
 		return dto;
 	}
 
@@ -55,6 +60,7 @@ public class UserConverter extends AbstractConverter<UserEntity, UserDto> {
 		dest.setExpired(from.isExpired());
 		dest.setLocked(from.isLocked());
 		dest.setUsername(from.getUsername());
+		dest.setId(from.getId());
 		List<RoleEntity> roleEntities = from.getRoleEntities();
 		if (CollectionUtils.isNotEmpty(roleEntities)) {
 			dest.setAuthorities(roleConverter.toDto(roleEntities));
