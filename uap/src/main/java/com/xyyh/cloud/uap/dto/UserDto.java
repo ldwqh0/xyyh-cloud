@@ -3,9 +3,13 @@ package com.xyyh.cloud.uap.dto;
 import java.io.Serializable;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.Data;
 
 @Data
+@JsonInclude(Include.NON_NULL)
 public class UserDto implements Serializable {
 
 	private static final long serialVersionUID = -6533477124543130545L;

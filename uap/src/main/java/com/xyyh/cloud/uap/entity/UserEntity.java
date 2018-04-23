@@ -1,6 +1,5 @@
 package com.xyyh.cloud.uap.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "user_")
-public class UserEntity extends BasePersistable implements Serializable {
+public class UserEntity extends BasePersistable {
 
 	private static final long serialVersionUID = -532240698999268985L;
 

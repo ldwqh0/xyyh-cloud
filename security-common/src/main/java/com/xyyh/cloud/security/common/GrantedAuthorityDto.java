@@ -1,10 +1,12 @@
 package com.xyyh.cloud.security.common;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+@JsonInclude(Include.NON_NULL)
 public class GrantedAuthorityDto implements Serializable, GrantedAuthority {
 
 	private static final long serialVersionUID = 8900209882990597641L;

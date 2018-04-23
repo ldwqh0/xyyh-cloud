@@ -2,11 +2,10 @@ package com.xyyh.cloud.uap.services.support;
 
 import java.util.UUID;
 
-import javax.cache.annotation.CacheRemoveAll;
-import javax.cache.annotation.CacheResult;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,7 +37,7 @@ public class UserServiceSupport implements UserService {
 
 	@Override
 	@Transactional
-	@CacheRemoveAll(cacheName = "user")
+	@CacheEvict(cacheNames = "user", allEntries = true)
 	public UserEntity save(UserDto user) {
 		String password = user.getPassword();
 		if (StringUtils.isBlank(password)) {
@@ -56,7 +55,7 @@ public class UserServiceSupport implements UserService {
 
 	@Override
 	@Transactional
-	@CacheRemoveAll(cacheName = "user")
+	@CacheEvict(cacheNames = "user", allEntries = true)
 	public UserEntity update(UUID id, UserDto user) {
 		UserEntity user_ = userRepository.findById(id).get();
 		if (user_ != null) {
@@ -66,7 +65,7 @@ public class UserServiceSupport implements UserService {
 	}
 
 	@Override
-	@CacheResult(cacheName = "user")
+	@Cacheable(cacheNames = "user", sync = true)
 	public UserEntity loadByUserName(String username) {
 		return userRepository.findByUsername(username);
 	}

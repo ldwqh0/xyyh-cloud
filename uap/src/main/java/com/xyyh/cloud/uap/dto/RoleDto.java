@@ -3,6 +3,9 @@ package com.xyyh.cloud.uap.dto;
 import java.io.Serializable;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.Data;
 
 /**
@@ -12,6 +15,7 @@ import lombok.Data;
  *
  */
 @Data
+@JsonInclude(Include.NON_NULL)
 public class RoleDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private UUID id;

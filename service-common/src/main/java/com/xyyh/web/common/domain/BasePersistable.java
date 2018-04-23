@@ -1,5 +1,6 @@
 package com.xyyh.web.common.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -12,7 +13,9 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.lang.Nullable;
 
 @MappedSuperclass
-public abstract class BasePersistable implements Persistable<UUID> {
+public abstract class BasePersistable implements Persistable<UUID>, Serializable {
+
+	private static final long serialVersionUID = -496832061973395035L;
 
 	@Id
 	@GeneratedValue

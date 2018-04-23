@@ -13,6 +13,8 @@ import lombok.Setter;
 @Entity(name = "role_")
 public class RoleEntity extends BasePersistable {
 
+	private static final long serialVersionUID = -2234424349814846533L;
+
 	@Column(name = "name_", length = 50, nullable = false, unique = true)
 	private String name;
 

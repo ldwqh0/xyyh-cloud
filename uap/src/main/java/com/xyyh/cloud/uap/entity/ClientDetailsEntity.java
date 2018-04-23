@@ -18,6 +18,11 @@ import lombok.Setter;
 public class ClientDetailsEntity extends BasePersistable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1731382261964525459L;
+
+	/**
 	 * 连接的密钥，密钥是加密的
 	 */
 	@Column(name = "client_secret_")
