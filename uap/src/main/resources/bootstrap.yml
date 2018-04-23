@@ -1,6 +1,6 @@
 spring:
   application:
-    name: uap
+    name: UAP
   cloud:
     config:
       uri: http://localhost:8000/

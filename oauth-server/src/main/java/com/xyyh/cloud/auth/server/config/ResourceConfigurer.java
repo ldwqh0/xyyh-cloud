@@ -24,7 +24,7 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 		super.configure(resources);
 		resources.tokenStore(tokenStore);
-//		resources.authenticationEntryPoint(authenticationEntryPoint)
+		// resources.authenticationEntryPoint(authenticationEntryPoint)
 		// resources.tokenServices(tokenServices);
 		// 如果使用jwt存储token的话，需要一个tokenExtractor将用户解析出来
 		// resources.tokenExtractor(tokenExtractor);
@@ -35,7 +35,7 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
 		super.configure(http);
 		// http.csrf().disable();
 		http.authorizeRequests().antMatchers("/**").authenticated();
-		http.requestMatchers().antMatchers("/user**");
+		http.requestMatchers().antMatchers("/users/**");
 	}
 
 	@Bean
@@ -43,4 +43,7 @@ public class ResourceConfigurer extends ResourceServerConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
+	public static void main(String[] args) {
+		System.out.println(new BCryptPasswordEncoder().encode("test"));
+	}
 }

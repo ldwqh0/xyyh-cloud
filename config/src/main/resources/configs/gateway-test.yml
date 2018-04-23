@@ -7,6 +7,10 @@ zuul:
       path: /test/**  
       strip-prefix: true
       service-id: OAUTH-RESOURCE #使用service-id 确定代理到哪个服务
+    uap2:
+      path: /users/**
+      strip-prefix: true
+      service-id: OAUTH-SERVER
 eureka:
   client:
     service-url:
@@ -21,5 +25,7 @@ security:
       client-authentication-scheme: header
       scope: cas
     resource:
-      user-info-uri: http://localhost:8080/test/test
+      user-info-uri: http://localhost:8888/users/current
       preferTokenInfo: false
+    sso:
+      login-path: /client/login ## 通过修改sso login-path修改通过获取code的accesstoken的路径

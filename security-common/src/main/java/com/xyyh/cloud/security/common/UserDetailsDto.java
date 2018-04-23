@@ -27,7 +27,7 @@ public class UserDetailsDto implements UserDetails {
 
 	private boolean locked;
 
-	private List<? extends GrantedAuthority> authorities;
+	private List<GrantedAuthorityDto> authorities;
 
 	public String getId() {
 		return id;
@@ -57,7 +57,7 @@ public class UserDetailsDto implements UserDetails {
 		return !credentialsExpired;
 	}
 
-	public void setAuthorities(List<? extends GrantedAuthority> authorities) {
+	public void setAuthorities(List<GrantedAuthorityDto> authorities) {
 		this.authorities = authorities;
 	}
 

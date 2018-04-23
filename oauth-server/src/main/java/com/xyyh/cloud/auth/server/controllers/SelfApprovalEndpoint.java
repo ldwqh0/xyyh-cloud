@@ -23,7 +23,6 @@ public class SelfApprovalEndpoint {
 		if (request.getAttribute("_csrf") != null) {
 			model.put("_csrf", request.getAttribute("_csrf"));
 		}
-		System.out.println(model);
 		return new ModelAndView("oauth2/confirm_access", model);
 	}
 

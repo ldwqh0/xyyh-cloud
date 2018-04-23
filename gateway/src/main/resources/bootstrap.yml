@@ -1,11 +1,7 @@
 spring:
   application:
-    name: gateway
+    name: GATEWAY
   cloud:
     config:
       uri: http://localhost:8000/
       profile: test
-security:
-  oauth2:
-    sso:
-      login-path: /client/login ## 通过修改sso login-path修改通过获取code的accesstoken的路径

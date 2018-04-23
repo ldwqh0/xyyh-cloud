@@ -1,20 +1,19 @@
 package com.xyyh.cloud.auth.server.clients;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.xyyh.web.common.uap.dto.UserDetailsDto;
+import com.xyyh.cloud.security.common.UserDetailsDto;
 
-
-@FeignClient("UAP/user")
+@FeignClient("UAP/users")
 public interface UserClient {
 
-	@RequestMapping(value = "{username}", method = RequestMethod.GET)
-	public UserDetailsDto loadUserByUsername(@PathVariable("username") String username);
-	
+	@GetMapping(params = "username")
+	public UserDetailsDto loadUserByUsername(@RequestParam("username") String username);
+
 	/**
 	 * 校验用户的密码
 	 * 

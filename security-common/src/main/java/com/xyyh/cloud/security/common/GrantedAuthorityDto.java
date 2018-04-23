@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @JsonInclude(Include.NON_NULL)
 public class GrantedAuthorityDto implements Serializable, GrantedAuthority {
 
@@ -13,6 +14,10 @@ public class GrantedAuthorityDto implements Serializable, GrantedAuthority {
 	private String id;
 
 	private String role;
+
+	public GrantedAuthorityDto() {
+
+	}
 
 	public GrantedAuthorityDto(String id, String role) {
 		this.id = id;
@@ -26,6 +31,14 @@ public class GrantedAuthorityDto implements Serializable, GrantedAuthority {
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override
