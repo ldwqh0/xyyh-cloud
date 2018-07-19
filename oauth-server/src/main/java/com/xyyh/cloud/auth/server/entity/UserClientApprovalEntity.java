@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 用户授权信息
+ * 用户授权信息， 表示某个用户已经对某个client进行了授权
  * 
  * @author LiDong
  *
