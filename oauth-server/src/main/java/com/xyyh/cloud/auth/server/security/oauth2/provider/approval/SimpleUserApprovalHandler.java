@@ -40,7 +40,7 @@ public class SimpleUserApprovalHandler implements UserApprovalHandler, Initializ
 			Authentication userAuthentication) {
 		String client = authorizationRequest.getClientId();
 		String user = userAuthentication.getName();
-		boolean isApprovaled = userClientApprovalService.isApprovaled(user, client);
+		boolean isApprovaled = userClientApprovalService.isApprovaled(user, client); // 判断用户是否已经对该应用进行过授权
 		authorizationRequest.setApproved(isApprovaled);
 		return authorizationRequest;
 	}
